@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: signLanguages
+Version: 0.0.0
+Author: iNeuron
+Author-email: boktiar@ineuron.ai
+License-File: LICENSE
+Dynamic: author
+Dynamic: author-email
+Dynamic: license-file
