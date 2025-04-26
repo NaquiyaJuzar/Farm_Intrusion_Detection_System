@@ -9,7 +9,7 @@ pipeline {
         stage('Setup Python Env') {
             steps {
                 bat 'python -m venv %VENV_DIR%'
-                bat '%VENV_DIR%\\Scripts\\pip install --upgrade pip'
+                bat "venv\\Scripts\\python.exe -m pip install --upgrade pip"
                 bat '%VENV_DIR%\\Scripts\\pip install -r requirements.txt'
             }
         }
