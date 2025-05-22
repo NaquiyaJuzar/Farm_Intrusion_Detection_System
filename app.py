@@ -28,18 +28,19 @@ def predictRoute():
         image = request.json['image']
         
         # Step 2: Decode and save the image to a fixed filename
-        decodeImage(image, clApp.filename)  # clApp.filename = 'inputImage.jpg'
+        input_dir = "yolov5/data"
+        os.makedirs(input_dir, exist_ok=True)
+        input_path = os.path.join(input_dir, clApp.filename)
+        decodeImage(image, input_path)  # clApp.filename = 'inputImage.jpg'
 
         # Step 3: Run YOLOv5 detection
         os.system(
             "cd yolov5/ && python detect.py "
-            "--weights best.pt "
-            "--img 416 --conf 0.5 "
-            "--source ../data/inputImage.jpg "
-            "--data data/coco128.yaml "
+            "--weights /best.pt --img 416 --conf 0.5 "
+            "--source data/{clApp.filename} "
             "--project runs/detect --name predict --exist-ok"
         )
-
+        os.system(detect_command)
 
         # Step 4: Read the output image as Base64 to send back to frontend
         output_path = "yolov5/runs/detect/predict/inputImage.jpg"
