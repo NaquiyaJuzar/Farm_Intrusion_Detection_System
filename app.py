@@ -33,10 +33,13 @@ def predictRoute():
         # Step 3: Run YOLOv5 detection
         os.system(
             "cd yolov5/ && python detect.py "
-            "--weights best.pt --img 416 --conf 0.5 "
+            "--weights best.pt "
+            "--img 416 --conf 0.5 "
             "--source ../data/inputImage.jpg "
+            "--data data/coco128.yaml "
             "--project runs/detect --name predict --exist-ok"
         )
+
 
         # Step 4: Read the output image as Base64 to send back to frontend
         output_path = "yolov5/runs/detect/predict/inputImage.jpg"
