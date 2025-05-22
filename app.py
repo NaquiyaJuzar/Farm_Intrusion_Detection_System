@@ -33,7 +33,7 @@ def predictRoute():
         # Step 3: Run YOLOv5 detection
         os.system(
             "cd yolov5/ && python detect.py "
-            "--weights best.pt --img 416 --conf 0.5 "
+            "--weights /best.pt --img 416 --conf 0.5 "
             "--source ../data/inputImage.jpg "
             "--project runs/detect --name predict --exist-ok"
         )
@@ -68,7 +68,7 @@ def predictRoute():
 @cross_origin()
 def predictLive():
     try:
-        os.system("cd yolov5/ && python detect.py --weights best.pt --img 416 --conf 0.5 --source 0")
+        os.system("cd yolov5/ && python detect.py --weights /best.pt --img 416 --conf 0.5 --source 0")
         os.system("rm -rf yolov5/runs")
         return "Camera starting!!" 
 
