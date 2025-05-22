@@ -16,10 +16,11 @@ pipeline {
 
         stage('Run App') {
             steps {
-                bat '%VENV_DIR%\\Scripts\\python app.py'
-                call venv\Scripts\activate
-                pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-                python app.py
+                bat '''
+                    call venv\\Scripts\\activate
+                    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+                    python app.py
+                '''
             }
         }
     }
